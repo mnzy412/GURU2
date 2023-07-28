@@ -7,21 +7,32 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MypageFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MypageFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+
     private var param1: String? = null
     private var param2: String? = null
 
+    var UserList = arrayListOf<User>(
+
+        User("한국형수달","korean-otter@naver.com"),
+        User("김수연","jmssk11@naver.com"),
+        User("임채원","hello@gmail.com"),
+        User("물고기","asdf@naver.com")
+    )
+    //배열을 만들어 사용자의 정보를 담아준다.
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.fragment_mypage)
+
+        var Adapter = ListAdapter(this, UserList)
+        item_list.adapter = Adapter
+        //만들어둔 ListAdapter를 이용해 카드뷰 - 사용자 정보 - 리스트뷰를 연결시켜준다.
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -39,14 +50,7 @@ class MypageFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MypageFragment.
-         */
+
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =

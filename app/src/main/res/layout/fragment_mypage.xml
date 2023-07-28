@@ -96,11 +96,11 @@
                             app:layout_constraintStart_toEndOf="@+id/mypage_text_name"
                             app:layout_constraintTop_toTopOf="parent" />
 
+
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recycler_view"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_margin="22dp"
                             android:layout_marginTop="30dp"
                             app:layoutManager="StaggeredGridLayoutManager"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +111,10 @@
                             app:layout_constraintTop_toBottomOf="@+id/mypage_image"
                             app:spanCount="2"
                             tools:listitem="@layout/item_list" />
+
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
                 </com.google.android.material.card.MaterialCardView>
 
 
