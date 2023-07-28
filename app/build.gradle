@@ -51,6 +51,5 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-auth-ktx")
-
-
+    implementation 'androidx.cardview:cardview:1.0.0'
 }
