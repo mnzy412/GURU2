@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-class ListAdapter (val context: Context, val UserList: ArrayList<Mypage_info>) : BaseAdapter() {
+class ListAdapter (val context: Context, val UserList: ArrayList<User>) : BaseAdapter() {
         override fun getCount(): Int {
             return UserList.size
         }

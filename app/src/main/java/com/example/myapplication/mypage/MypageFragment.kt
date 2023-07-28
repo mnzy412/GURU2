@@ -18,9 +18,9 @@ class MypageFragment : Fragment() {
 
     var UserList = arrayListOf<User>(
 
-        User("한국형수달","korean-otter@naver.com"),
-        User("김수연","jmssk11@naver.com"),
-        User("임채원","hello@gmail.com"),
+        User("보관된 책","korean-otter@naver.com"),
+        User("완독한 책","jmssk11@naver.com"),
+        User("읽은 시간","hello@gmail.com"),
         User("물고기","asdf@naver.com")
     )
     //배열을 만들어 사용자의 정보를 담아준다.
