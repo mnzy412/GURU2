@@ -3,16 +3,16 @@ package com.example.myapplication.record
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import androidx.fragment.app.FragmentTransaction
+import android.widget.ImageButton
 import com.example.myapplication.R
 
-class RecordShowActivity : AppCompatActivity() {
+class RecordShowActivity2 : AppCompatActivity() {
 
-    private lateinit var record_backBtn : ImageView
+    lateinit var record_backBtn : ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_record_show)
+        setContentView(R.layout.activity_record_show2)
 
         record_backBtn = findViewById(R.id.record_backBtn)
 

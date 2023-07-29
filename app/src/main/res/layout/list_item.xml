@@ -8,7 +8,7 @@
     android:layout_margin="15dp">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/recording_save"
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:layout_marginStart="16dp"
@@ -51,7 +51,7 @@
         android:layout_marginBottom="16dp"
         android:text="오늘날 많은 문명 이기 속에 우리 잠재적가치의 소멸에 대한 엄중한 경고가 될만한 서적임"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/recording_save"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.147" />
 

@@ -62,33 +62,23 @@
     </androidx.appcompat.widget.Toolbar>
 
     <EditText
-        android:id="@+id/titleEt"
-        android:layout_width="378dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/color1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/record_toolbar" />
-
-    <EditText
         android:id="@+id/review"
         android:layout_width="380dp"
         android:layout_height="380dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/color1"
         android:ems="10"
         android:gravity="start"
         android:hint="  한 줄 평을 적어 주세요 :)"
         android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/imgbtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleEt" />
+        app:layout_constraintTop_toBottomOf="@+id/bookSearch" />
 
     <Button
         android:id="@+id/imgbtn"
@@ -107,18 +97,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/review" />
 
+    <Button
+        android:id="@+id/bookSearch"
+        android:layout_width="377dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/color1"
+        android:text="책을 선택해주세요"
+        android:textColor="@color/color8"
+        app:icon="@drawable/search_btn"
+        app:iconTint="@color/color8"
+        app:layout_constraintBottom_toTopOf="@+id/review"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/record_toolbar" />
+
     <ImageButton
         android:id="@+id/micbtn"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="309dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/imgbtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/review"
-        app:srcCompat="@drawable/baseline_mic_none_24" />
+        app:srcCompat="@drawable/baseline_mic_none_24"
+        app:tint="@color/color8" />
 
     <TextView
         android:id="@+id/textCount"
@@ -129,18 +139,6 @@
         android:text="0/200"
         app:layout_constraintBottom_toTopOf="@+id/imgbtn"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/bookSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/titleEt"
-        app:layout_constraintStart_toStartOf="@+id/titleEt"
-        app:layout_constraintTop_toTopOf="@+id/titleEt"
-        app:srcCompat="@drawable/search_btn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

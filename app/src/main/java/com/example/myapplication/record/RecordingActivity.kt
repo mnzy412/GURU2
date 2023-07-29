@@ -19,6 +19,7 @@ class RecordingActivity : AppCompatActivity() {
 
     lateinit var resultText : TextView
     lateinit var record_backBtn : ImageButton
+    lateinit var recording_save : ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +54,12 @@ class RecordingActivity : AppCompatActivity() {
                 Toast.makeText(this, "당신의 장비가 음성을 텍스트로 변경하지 못합니다.",
                     Toast.LENGTH_SHORT).show()
             }
+        }
+
+        recording_save = findViewById(R.id.recording_save) //책 검색으로 이동
+        recording_save.setOnClickListener {
+            var intent = Intent(this, BookAddActivity::class.java)
+            startActivity(intent)
         }
     }//onCreate
 

@@ -10,7 +10,6 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.FragmentTransaction
 import com.example.myapplication.R
 
 
@@ -24,7 +23,7 @@ class BookAddActivity : AppCompatActivity() {
     private lateinit var textCount :TextView
     private lateinit var record_backBtn : ImageView
     private lateinit var record_save :ImageView
-    private lateinit var bookSearch : ImageView
+    lateinit var bookSearch : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

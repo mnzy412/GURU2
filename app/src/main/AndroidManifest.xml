@@ -13,6 +13,12 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".record.RecordShowActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".record.AddTextActivity"
+            android:exported="false" />
+        <activity
             android:name=".record.SearchActivity2"
             android:exported="false" />
         <activity
