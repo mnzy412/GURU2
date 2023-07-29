@@ -1,60 +1,74 @@
 package com.example.myapplication.mypage
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.MypageRVAdpater
 import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentMypageBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MypageFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@Suppress("UNREACHABLE_CODE")
 class MypageFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var viewBinding: FragmentMypageBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mypage, container, false)
-    }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MypageFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MypageFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    ): View? {
+        viewBinding = FragmentMypageBinding.inflate(layoutInflater)
+
+        val mypageList: ArrayList<Mypage> = arrayListOf()
+        val mAdapter = MypageRVAdpater(mypageList)
+
+        mypageList.apply {
+            add(
+                Mypage(
+                    "보관된 책",
+                    3,
+                    "권"
+                )
+            )
+            add(
+                Mypage(
+                    "완독한 책",
+                    27,
+                    "권"
+                )
+            )
+            add(
+                Mypage(
+                    "독서 시간",
+                    375,
+                    "시간"
+                )
+            )
+            add(
+                Mypage(
+                    "메모",
+                    32,
+                    "개"
+                )
+            )
+        }
+
+        viewBinding.mypageRv.layoutManager = GridLayoutManager (context,2)
+        viewBinding.mypageRv.adapter = mAdapter
+
+
+//        mAdapter!!.itemClick = object : MypageRVAdpater.ItemClick {
+//
+//        }
+        return viewBinding.root
+
     }
 }
+
