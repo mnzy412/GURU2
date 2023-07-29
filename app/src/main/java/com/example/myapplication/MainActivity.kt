@@ -7,6 +7,8 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.mypage.MypageFragment
 import com.example.myapplication.record.RecordFragment
 
+
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivityMainBinding
