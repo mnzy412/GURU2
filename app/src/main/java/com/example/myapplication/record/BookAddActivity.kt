@@ -8,7 +8,9 @@ import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentTransaction
 import com.example.myapplication.R
 
 
@@ -20,10 +22,10 @@ class BookAddActivity : AppCompatActivity() {
     private lateinit var imgbtn: Button
     private lateinit var micbtn : ImageButton
     private lateinit var textCount :TextView
-
+    private lateinit var record_backBtn : ImageView
+    private lateinit var record_save :ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_add)
@@ -57,6 +59,18 @@ class BookAddActivity : AppCompatActivity() {
         imgbtn = findViewById(R.id.imgbtn)
         imgbtn.setOnClickListener {    //사진첨부 실행
             var intent = Intent(this, CameraActivity::class.java)
+            startActivity(intent)
+        }
+
+        record_backBtn = findViewById(R.id.record_backBtn)
+        record_backBtn.setOnClickListener {    //이전으로
+            var intent = Intent(this, RecordFragment::class.java)
+            startActivity(intent)
+        }
+
+        record_save = findViewById(R.id.record_save)
+        record_save.setOnClickListener {
+            var intent = Intent(this, RecordShowActivity::class.java)
             startActivity(intent)
         }
     }

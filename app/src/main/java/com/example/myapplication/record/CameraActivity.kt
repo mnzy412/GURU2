@@ -16,6 +16,7 @@ class CameraActivity : AppCompatActivity() {
     lateinit var bitmap: Bitmap
     lateinit var photo: ImageView
     lateinit var record_save : ImageView
+    lateinit var record_backBtn : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +40,12 @@ class CameraActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        record_backBtn = findViewById(R.id.record_backBtn)
+        record_backBtn.setOnClickListener {    //이전으로
+            var intent = Intent(this, BookAddActivity::class.java)
+            startActivity(intent)
+        }
+
     }//OnCreate
 
     private val activityResult: ActivityResultLauncher<Intent> = registerForActivityResult(
@@ -52,4 +59,6 @@ class CameraActivity : AppCompatActivity() {
                 photo.setImageBitmap(bitmap)
             }
     }
+
+
 }
