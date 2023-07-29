@@ -6,63 +6,209 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.myapplication.MypageRVAdpater
 import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentRecordBinding
+import com.example.myapplication.mypage.Mypage
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-
-/**
- * A simple [Fragment] subclass.
- * Use the [RecordFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RecordFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    lateinit var viewBinding: FragmentRecordBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        viewBinding = FragmentRecordBinding.inflate(layoutInflater)
 
-        return inflater.inflate(R.layout.fragment_record, container, false)
 
-    }
+        val recordList: ArrayList<Record> = arrayListOf()
+        val rAdapter = RecordRVAdapter(recordList)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RecordFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RecordFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        recordList.apply {
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.TRUE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    R.drawable.img
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.TRUE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    R.drawable.img
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+            add(
+                Record(
+                    HasImage.FALSE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    null
+                )
+            )
+
+        }
+
+        viewBinding.recordRV.layoutManager = StaggeredGridLayoutManager (2,LinearLayoutManager.VERTICAL)
+        viewBinding.recordRV.adapter = rAdapter
+
+
+
+        return viewBinding.root
     }
 }
