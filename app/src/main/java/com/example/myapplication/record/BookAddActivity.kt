@@ -24,6 +24,7 @@ class BookAddActivity : AppCompatActivity() {
     private lateinit var textCount :TextView
     private lateinit var record_backBtn : ImageView
     private lateinit var record_save :ImageView
+    private lateinit var bookSearch : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -71,6 +72,12 @@ class BookAddActivity : AppCompatActivity() {
         record_save = findViewById(R.id.record_save)
         record_save.setOnClickListener {
             var intent = Intent(this, RecordShowActivity::class.java)
+            startActivity(intent)
+        }
+
+        bookSearch = findViewById(R.id.bookSearch) //책 검색으로 이동
+        bookSearch.setOnClickListener {
+            var intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
         }
     }

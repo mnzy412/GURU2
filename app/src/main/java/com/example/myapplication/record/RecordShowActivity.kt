@@ -15,7 +15,7 @@ class RecordShowActivity : AppCompatActivity() {
 
         record_backBtn = findViewById(R.id.record_backBtn)
         record_backBtn.setOnClickListener {    //이전으로
-            var intent = Intent(this, RecordFragment::class.java)
+            var intent = Intent(this, BookAddActivity::class.java)
             startActivity(intent)
         }
     }

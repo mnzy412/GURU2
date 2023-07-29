@@ -10,6 +10,7 @@ import com.example.myapplication.R
 class SearchActivity : AppCompatActivity() {
 
     private lateinit var record_save : ImageView
+    private lateinit var record_backBtn : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +21,13 @@ class SearchActivity : AppCompatActivity() {
             var intent = Intent(this, CameraActivity::class.java)
             startActivity(intent)
         }
+
+        record_backBtn = findViewById(R.id.record_backBtn)
+        record_backBtn.setOnClickListener {    //이전으로
+            var intent = Intent(this, RecordFragment::class.java)
+            startActivity(intent)
+        }
+
     }
 
 
