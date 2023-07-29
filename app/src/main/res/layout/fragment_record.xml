@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/white"
-        android:backgroundTint="@color/color1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,11 +24,14 @@
 
             <TextView
                 android:id="@+id/record_text"
-                android:layout_width="70dp"
-                android:layout_height="match_parent"
+                android:layout_width="52dp"
+                android:layout_height="73dp"
                 android:layout_marginEnd="325dp"
+                android:fontFamily="@font/font_write"
                 android:gravity="center"
                 android:text="기록"
+                android:textColor="@color/color5"
+                android:textSize="48sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,10 +40,9 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="42dp"
-                android:layout_height="33dp"
+                android:layout_width="26dp"
+                android:layout_height="21dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
                 android:src="@drawable/booktory1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/record_text"

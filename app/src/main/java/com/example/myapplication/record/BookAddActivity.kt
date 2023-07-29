@@ -30,11 +30,7 @@ class BookAddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_add)
 
-        micbtn = findViewById(R.id.micbtn)
-        micbtn.setOnClickListener {    //음성기록으로 이동
-            var intent = Intent(this, RecordingActivity::class.java)
-            startActivity(intent)
-        }
+
 
         textCount = findViewById(R.id.textCount)
         review = findViewById(R.id.review)
@@ -55,6 +51,12 @@ class BookAddActivity : AppCompatActivity() {
             }
 
         })
+
+        micbtn = findViewById(R.id.micbtn)
+        micbtn.setOnClickListener {    //음성기록으로 이동
+            var intent = Intent(this, RecordingActivity::class.java)
+            startActivity(intent)
+        }
 
         imgbtn = findViewById(R.id.imgbtn)
         imgbtn.setOnClickListener {    //사진첨부 실행

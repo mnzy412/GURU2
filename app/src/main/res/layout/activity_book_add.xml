@@ -36,6 +36,7 @@
                 android:id="@+id/record_text"
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
+                android:fontFamily="@font/pre_b"
                 android:gravity="center"
                 android:text="기록하기"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +44,8 @@
                 app:layout_constraintHorizontal_bias="0.533"
                 app:layout_constraintStart_toEndOf="@+id/record_backBtn"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0"
+                tools:textSize="14sp" />
 
             <ImageView
                 android:id="@+id/record_save"
@@ -66,14 +68,15 @@
         android:layout_width="380dp"
         android:layout_height="380dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@color/color1"
         android:ems="10"
-        android:gravity="start"
+        android:fontFamily="@font/font_write"
+        android:gravity="top"
         android:hint="  한 줄 평을 적어 주세요 :)"
         android:inputType="text"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/imgbtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
