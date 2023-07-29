@@ -130,5 +130,17 @@
         app:layout_constraintBottom_toTopOf="@+id/imgbtn"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <ImageView
+        android:id="@+id/bookSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/titleEt"
+        app:layout_constraintStart_toStartOf="@+id/titleEt"
+        app:layout_constraintTop_toTopOf="@+id/titleEt"
+        app:srcCompat="@drawable/search_btn" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

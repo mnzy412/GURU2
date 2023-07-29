@@ -13,6 +13,12 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".record.SearchActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".record.SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".record.RecordShowActivity"
             android:exported="false" />
         <activity
@@ -26,7 +32,7 @@
             android:exported="false" />
         <activity
             android:name=".record.BookAddActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".Signup2Activity"
             android:exported="false" />
