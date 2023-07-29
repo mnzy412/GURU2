@@ -41,10 +41,10 @@ class Signup2Activity : AppCompatActivity() {
         mDbRef = Firebase.database.reference
 
         viewBinding.signupFinBtn.setOnClickListener {
-
             signup(nickname, email, password)
-
         }
+
+        viewBinding.registerBackBtn.setOnClickListener { finish() }
 
         setContentView(viewBinding.root)
     }
