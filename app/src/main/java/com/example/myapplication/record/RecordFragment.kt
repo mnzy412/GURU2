@@ -242,7 +242,4 @@ class RecordFragment : Fragment() {
 
         return viewBinding.root
     }
-
-
-
 }

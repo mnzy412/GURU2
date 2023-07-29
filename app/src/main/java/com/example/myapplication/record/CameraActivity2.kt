@@ -12,6 +12,7 @@ class CameraActivity2 : AppCompatActivity() {
     lateinit var record_backBtn : ImageView
     lateinit var record_save :ImageView
     lateinit var textBtn : FloatingActionButton
+    lateinit var drawBtn : FloatingActionButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_camera2)
@@ -33,5 +34,6 @@ class CameraActivity2 : AppCompatActivity() {
             val intent = Intent(this, AddTextActivity::class.java)
             startActivity(intent)
         }
+
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".record.CameraActivity2">
+    tools:context=".record.AddTextActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:backgroundTint="@color/color1"
@@ -48,29 +48,29 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
-
     <ImageView
-        android:id="@+id/photo"
-        android:layout_width="411dp"
-        android:layout_height="452dp"
+        android:id="@+id/recording_save"
+        android:layout_width="413dp"
+        android:layout_height="457dp"
         android:layout_marginBottom="50dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/bookpage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/bookpage" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/textBtn"
+
+    <EditText
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:clickable="true"
-        app:backgroundTint="@color/color3"
-        app:layout_constraintBottom_toTopOf="@+id/photo"
+        android:layout_centerInParent="true"
+        android:hint="여기에 텍스트를 입력하세요"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/recording_save"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/baseline_text_fields_24"
-        tools:tint="@color/white" />
+        app:layout_constraintTop_toTopOf="@+id/recording_save" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
