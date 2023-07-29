@@ -95,11 +95,29 @@ class RecordFragment : Fragment() {
             )
             add(
                 Record(
+                    HasImage.TRUE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    R.drawable.img
+                )
+            )
+            add(
+                Record(
                     HasImage.FALSE,
                     "김별",
                     "놀고싶어요밖에서",
                     "밖에서 놀 수 있는 것은 최고의 행복이다.",
                     null
+                )
+            )
+            add(
+                Record(
+                    HasImage.TRUE,
+                    "김별",
+                    "놀고싶어요밖에서",
+                    "밖에서 놀 수 있는 것은 최고의 행복이다.",
+                    R.drawable.img
                 )
             )
             add(
