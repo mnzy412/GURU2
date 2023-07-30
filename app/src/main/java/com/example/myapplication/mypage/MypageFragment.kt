@@ -80,8 +80,6 @@ class MypageFragment : Fragment() {
             dialog.setMessage("Booktory를 정말 로그아웃하시겠습니까?")
             dialog.setIcon(R.drawable.mypage_profill)
 
-            FirebaseAuth.getInstance().signOut()
-
             fun toast_p() {
                 Toast.makeText(view.context, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this,LoginActivity::class.java)
@@ -90,8 +88,10 @@ class MypageFragment : Fragment() {
             var dialog_listener = object: DialogInterface.OnClickListener{
                 override fun onClick(dialog: DialogInterface?, which: Int) {
                     when(which){
-                        DialogInterface.BUTTON_POSITIVE ->
+                        DialogInterface.BUTTON_POSITIVE -> {
+                            FirebaseAuth.getInstance().signOut()
                             toast_p()
+                        }
                     }
                 }
             }
