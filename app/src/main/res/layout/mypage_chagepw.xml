@@ -32,7 +32,7 @@
                 android:backgroundTint="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/x" />
+                app:srcCompat="@drawable/back" />
 
             <TextView
                 android:id="@+id/textview_chage"
@@ -42,7 +42,7 @@
                 android:layout_marginTop="64dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/pre_semibold"
-                android:text="비밀번호 변경"
+                android:text="비밀번호 설정"
                 android:textColor="@color/black1"
                 android:textSize="16sp"
                 app:layout_constraintStart_toEndOf="@+id/button_x"
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
-                android:hint="변경할 비밀번호"
+                android:hint="변경하실 비밀번호를 입력해주세요"
                 app:hintTextColor="@color/gray2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -61,24 +61,25 @@
 
                 <EditText
                     android:id="@+id/pw_ch"
-                    android:maxLines="1"
-                    android:layout_width="300dp"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    />
+                    android:maxLines="1"
+                    android:textColor="@color/black1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layout_pw2"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="비밀번호 재확인"
-                app:hintTextColor="@color/gray2"
+                android:hint="비밀번호 확인"
+                app:hintTextColor="@color/color1"
+                android:textColor="@color/black1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_pw">
@@ -86,7 +87,7 @@
                 <EditText
                     android:id="@+id/pw_re"
                     android:maxLines="1"
-                    android:layout_width="300dp"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
@@ -106,7 +107,7 @@
         android:fontFamily="@font/pre_m"
         android:insetTop="0dp"
         android:text="비밀번호 변경하기"
-        android:textColor="@color/black1"
+        android:textColor="@color/color8"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
