@@ -18,7 +18,7 @@ class SearchActivity : AppCompatActivity() {
 
         record_save = findViewById(R.id.record_save)
         record_save.setOnClickListener {
-            var intent = Intent(this, BookAddActivity::class.java)
+            var intent = Intent(this, SearchActivity2::class.java)
             startActivity(intent)
         }
 

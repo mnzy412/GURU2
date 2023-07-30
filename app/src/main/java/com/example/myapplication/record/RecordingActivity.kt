@@ -25,6 +25,8 @@ class RecordingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recording)
 
+
+
         record_backBtn = findViewById(R.id.record_backBtn)
         record_backBtn.setOnClickListener {    //이전 화면으로 돌아가기
             var intent = Intent(this, BookAddActivity::class.java)
@@ -56,11 +58,7 @@ class RecordingActivity : AppCompatActivity() {
             }
         }
 
-        recording_save = findViewById(R.id.recording_save) //책 검색으로 이동
-        recording_save.setOnClickListener {
-            var intent = Intent(this, BookAddActivity::class.java)
-            startActivity(intent)
-        }
+
     }//onCreate
 
     private val activityResult : ActivityResultLauncher<Intent> = registerForActivityResult(
