@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
 import com.example.myapplication.R
-import com.example.myapplication.book.adapter.HomeGridViewAdapter
+import com.example.myapplication.book.adapter.BookGridViewAdapter
+import com.example.myapplication.databinding.FragmentBookBinding
 import com.example.myapplication.model.data.BookDTO
 
 class BookGridFragment : Fragment() {
@@ -33,7 +34,7 @@ class BookGridFragment : Fragment() {
         )
 
         val gridView = binding.findViewById<GridView>(R.id.home_book_gridview)
-        val adapter = HomeGridViewAdapter(binding.context, sampleDataList)
+        val adapter = BookGridViewAdapter(binding.context, sampleDataList)
         gridView?.adapter = adapter
 
         return binding
