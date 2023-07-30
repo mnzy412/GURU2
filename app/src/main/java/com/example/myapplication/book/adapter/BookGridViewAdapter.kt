@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.model.data.BookDTO
 
-class HomeGridViewAdapter(private val context: Context, private val books: List<BookDTO>) : BaseAdapter() {
+class BookGridViewAdapter(private val context: Context, private val books: List<BookDTO>) : BaseAdapter() {
 
     override fun getCount(): Int {
         return books.size
