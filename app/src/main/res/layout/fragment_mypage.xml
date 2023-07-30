@@ -130,7 +130,7 @@
                             app:layout_constraintStart_toStartOf="parent" />
 
                         <Button
-                            android:id="@+id/mypage_btn_2"
+                            android:id="@+id/mypage_btn_change"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:backgroundTint="#FFFFFF"
@@ -143,7 +143,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/mypage_btn_1" />
 
                         <Button
-                            android:id="@+id/mypage_btn_3"
+                            android:id="@+id/mypage_btn_logout"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:layout_marginTop="0dp"
@@ -155,7 +155,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/mypage_btn_2" />
+                            app:layout_constraintTop_toBottomOf="@+id/mypage_btn_change" />
 
                         <Button
                             android:id="@+id/mypage_btn_4"
@@ -170,7 +170,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/mypage_btn_3" />
+                            app:layout_constraintTop_toBottomOf="@+id/mypage_btn_logout" />
 
                         <Button
                             android:id="@+id/mypage_btn_5"
@@ -188,7 +188,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/mypage_btn_4" />
 
                         <Button
-                            android:id="@+id/mypage_btn_logout"
+                            android:id="@+id/mypage_btn_quit"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:layout_marginTop="20dp"
