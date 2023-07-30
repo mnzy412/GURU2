@@ -25,7 +25,6 @@ class Signup2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = ActivitySignup2Binding.inflate(layoutInflater)
 
-
         val nickname = viewBinding.nicknameEt.text.toString()
         val email = intent.getStringExtra("email").toString()
         val password = intent.getStringExtra("password").toString()
@@ -73,8 +72,6 @@ class Signup2Activity : AppCompatActivity() {
                 }
             }
     }
-
-
 
 }
 

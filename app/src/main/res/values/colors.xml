@@ -12,4 +12,12 @@
     <color name="black1" > #191919 </color>
     <color name="black2" > #565656 </color>
     <color name="transparent">#00ff0000</color>
+
+
+    <!-- TabLayout 상태값 정의 -->
+    <color name="tab_select">#654D47</color>
+    <color name="tab_unselect">#EFEBE5</color>
+
+    <color name="tab_select_text">#EFEBE5</color>
+    <color name="tab_unselect_text">#A1816E</color>
 </resources>
