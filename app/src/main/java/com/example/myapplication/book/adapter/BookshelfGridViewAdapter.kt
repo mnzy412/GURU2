@@ -9,16 +9,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
-import com.example.myapplication.model.data.BookDTO
+import com.example.myapplication.model.data.BookshelfDTO
 
-class BookGridViewAdapter(private val context: Context, private val books: List<BookDTO>) : BaseAdapter() {
+class BookshelfGridViewAdapter(
+    val context: Context,
+    private val data: List<BookshelfDTO>
+) : BaseAdapter() {
 
     override fun getCount(): Int {
-        return books.size
+        return data.size
     }
 
     override fun getItem(position: Int): Any {
-        return books[position]
+        return data[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -37,15 +40,10 @@ class BookGridViewAdapter(private val context: Context, private val books: List<
             holder = view.tag as ViewHolder
         }
 
-        val book = books[position]
+        val book = data[position]
 
-        Glide.with(context).load(book.bookImageURL).into(holder.bookImage)
-
-        if (book.bookReadProgress == 100) {
-            holder.gradientViewGroup.visibility = View.GONE
-        }else{
-            holder.bookProgress.text = "${book.bookReadProgress}%"
-        }
+        Glide.with(context).load(book.thumbnail).into(holder.bookImage)
+        holder.gradientViewGroup.visibility = View.GONE
 
         return view!!
     }
@@ -55,4 +53,5 @@ class BookGridViewAdapter(private val context: Context, private val books: List<
         val bookProgress: TextView = view.findViewById(R.id.book_read_progress)
         val gradientViewGroup: View = view.findViewById(R.id.gradation_viewgroup)
     }
+
 }
