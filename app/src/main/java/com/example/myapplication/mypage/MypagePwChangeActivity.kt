@@ -1,50 +1,84 @@
 package com.example.myapplication.mypage
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.myapplication.R
-import com.google.firebase.FirebaseApp
-import com.google.firebase.FirebaseOptions
+
+
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class MypagePwChangeActivity : AppCompatActivity() {
 
-    lateinit var emailEt : EditText
-    lateinit var sendBtn : Button
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var loginBtn : Button
+    private lateinit var emailEt : EditText
+    private lateinit var pwdEt : EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage_pw_change)
 
+        loginBtn = findViewById(R.id.loginBtn)
         emailEt = findViewById(R.id.emailEt)
-        val sendBtn: Button = findViewById(R.id.sendBtn)
+        pwdEt = findViewById(R.id.pwdEt)
 
-        sendBtn.setOnClickListener {
+        loginBtn.setOnClickListener {
+            // EditText 필드에서 이메일과 비밀번호 가져오기
             val email = emailEt.text.toString().trim()
+            val password = pwdEt.text.toString()
 
-            if (email.isNotEmpty()) {
-                sendPasswordResetEmail(email)
-            }
+            // login 함수 호출
+            login(email, password)
+        }
 
+    }
+
+        private fun login(email: String, password: String) {
+            val auth = FirebaseAuth.getInstance()
+
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // 로그인 성공
+                        val user = auth.currentUser
+                        user?.let {
+                            // 비밀번호 재설정을 위해 새 비밀번호를 설정
+                            val newPassword = "newPassword123" // 새로운 비밀번호를 입력해주세요.
+                            updatePassword(it, newPassword)
+                        }
+                    } else {
+                        // 로그인 실패
+                        showToast("로그인에 실패했습니다.")
+                    }
+                }
+        }
+
+        private fun updatePassword(user: FirebaseUser, newPassword: String) {
+            user.updatePassword(newPassword)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // 비밀번호 업데이트 성공
+                        showToast("비밀번호를 성공적으로 업데이트했습니다.")
+                        // 비밀번호 업데이트 후, 비밀번호 재입력 화면으로 이동
+                        val intent = Intent(this, MyPagePwChangeActivity2::class.java)
+                        intent.putExtra("newPassword", newPassword)
+                        startActivity(intent)
+                    } else {
+                        // 실패한 경우 처리할 코드
+                        showToast("비밀번호 업데이트에 실패했습니다.")
+                    }
+                }
+        }
+
+        private fun showToast(message: String) {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
     }
-
-    private fun sendPasswordResetEmail(email: String) {
-        val auth = FirebaseAuth.getInstance()
-
-        auth.sendPasswordResetEmail(email)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    // 비밀번호 재설정 이메일이 성공적으로 보내졌을 때 처리할 코드
-                    println("비밀번호 재설정 이메일을 성공적으로 보냈습니다.")
-                } else {
-                    // 실패한 경우 처리할 코드
-                    println("비밀번호 재설정 이메일 전송에 실패했습니다.")
-                }
-            }
-    }
-}

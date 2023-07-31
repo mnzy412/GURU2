@@ -33,12 +33,13 @@
         app:layout_constraintStart_toEndOf="@+id/quit_close"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:gravity="center"
-        android:text="회원가입 시 사용한\n이메일을 입력해 주세요"
+        android:text="비밀번호 재설정을 위해\n다시 로그인해 주세요"
         android:textColor="@color/color8"
         android:textSize="18dp"
 
@@ -47,11 +48,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,15 +76,37 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/deletePwd"
+            android:layout_width="284dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="비밀번호"
+            app:passwordToggleEnabled="true"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/deleteEmail">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pwdEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textWebPassword"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/sendBtn"
+        android:id="@+id/loginBtn"
         android:layout_width="284dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:background="@color/color3"
-        android:text="보내기"
+        android:text="로그인"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

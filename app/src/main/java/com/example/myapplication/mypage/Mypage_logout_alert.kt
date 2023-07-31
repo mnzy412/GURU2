@@ -1,5 +1,8 @@
 //package com.example.myapplication.mypage
 //
+//import android.os.Bundle
+//import com.example.myapplication.R
+//
 //class Mypage_logout_alert : AppCompatActivity() {
 //        // view
 //        private lateinit var resultText: TextView

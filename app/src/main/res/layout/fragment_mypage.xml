@@ -127,7 +127,7 @@
                             android:backgroundTint="#FFFFFF"
                             android:fontFamily="@font/pre_r"
                             android:gravity="center_vertical"
-                            android:text="비빌번호 설정"
+                            android:text="비밀번호 재설정"
                             android:textColor="#565656"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"/>
