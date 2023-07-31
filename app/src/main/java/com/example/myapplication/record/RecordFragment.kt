@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentRecordBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.firestore.FirebaseFirestore
+
 
 class RecordFragment : Fragment(){
     lateinit var viewBinding: FragmentRecordBinding
