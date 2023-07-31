@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,9 +13,49 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".BookEditWebView"
+            android:exported="false" />
+        <activity
+            android:name=".BookSearchWebView"
+            android:exported="false" />
+        <activity
+            android:name=".record.RecordShowActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".record.AddTextActivity"
+            android:exported="false" />
+        <activity
+            android:name=".record.SearchActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".record.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".record.RecordShowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".record.CameraActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".record.CameraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".record.RecordingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".record.BookAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Signup2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +63,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
