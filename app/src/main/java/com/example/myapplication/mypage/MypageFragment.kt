@@ -83,7 +83,8 @@ class MypageFragment : Fragment() {
         }
 
         viewBinding.mypageBtnQuit.setOnClickListener() {
-            Firebase.auth.currentUser?.delete()
+            var intent=Intent(context, MypageQuitActivity::class.java) //로그인 페이지 이동
+            startActivity(intent)
         }
         return viewBinding.root
 
