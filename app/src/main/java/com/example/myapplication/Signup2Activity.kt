@@ -25,12 +25,6 @@ class Signup2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = ActivitySignup2Binding.inflate(layoutInflater)
 
-        val nickname = viewBinding.nicknameEt.text.toString()
-        val email = intent.getStringExtra("email").toString()
-        val password = intent.getStringExtra("password").toString()
-
-        Log.d("Signup2Activity", "nickname: ${nickname}")
-        Log.d("Signup2Activity", "password: ${password}")
 
 
         //인증 초기화
@@ -40,10 +34,16 @@ class Signup2Activity : AppCompatActivity() {
         mDbRef = Firebase.database.reference
 
         viewBinding.signupFinBtn.setOnClickListener {
-            signup(nickname, email, password)
-        }
+            val nickname = viewBinding.nicknameEt.text.toString()
+            val email = intent.getStringExtra("email").toString()
+            val password = intent.getStringExtra("password").toString()
 
-        viewBinding.registerBackBtn.setOnClickListener { finish() }
+            Log.d("Signup2Activity", "nickname: ${nickname}")
+            Log.d("Signup2Activity", "password: ${password}")
+
+            signup(nickname, email, password)
+
+        }
 
         setContentView(viewBinding.root)
     }
@@ -58,6 +58,7 @@ class Signup2Activity : AppCompatActivity() {
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {  //회원가입 성공
+                    val nickname = viewBinding.nicknameEt.text.toString()
                     val intent = Intent (this, LoginActivity::class.java)
                     overridePendingTransition(0, 0) //화면 전환 효과 없애기
                     startActivity(intent)
@@ -72,6 +73,8 @@ class Signup2Activity : AppCompatActivity() {
                 }
             }
     }
+
+
 
 }
 
