@@ -23,8 +23,7 @@ class BookShelfWebView : AppCompatActivity() {
     private val FILE_CHOOSER_RESULT_CODE = 100
     private var mUploadMessage: ValueCallback<Array<Uri>>? = null
 
-    // private val URL = "http://10.0.2.2:5173/book-edit/"
-    private val URL = "https://outsourcing-guru-book.vercel.app/book-edit/"
+    private val URL = "${Constants.WEB_SERVICE_URL}/book-edit/"
     private lateinit var webView: WebView
 
     lateinit var auth: FirebaseAuth
@@ -35,14 +34,14 @@ class BookShelfWebView : AppCompatActivity() {
         setContentView(R.layout.activity_book_shelf_web_view)
 
         val bookshelfId = intent?.getStringExtra("bookshelf_id")
-        if(bookshelfId == null){
+        if (bookshelfId == null) {
             Toast.makeText(this, "올바르지 않은 접근입니다", Toast.LENGTH_SHORT).show()
             finish()
             return
         }
 
         auth = Firebase.auth
-        if(auth.currentUser == null){
+        if (auth.currentUser == null) {
             Toast.makeText(this, "로그인이 필요한 페이지입니다", Toast.LENGTH_SHORT).show()
             finish()
             return
@@ -73,6 +72,7 @@ class BookShelfWebView : AppCompatActivity() {
                 filePathCallback: ValueCallback<Array<Uri>>?,
                 fileChooserParams: FileChooserParams?
             ): Boolean {
+                // 파일 선택기
                 mUploadMessage?.onReceiveValue(null)
                 mUploadMessage = filePathCallback
                 val intent = fileChooserParams?.createIntent()
@@ -84,10 +84,20 @@ class BookShelfWebView : AppCompatActivity() {
                 }
                 return true
             }
+
+            // 오디오 선택기
+            override fun onPermissionRequest(request: android.webkit.PermissionRequest?) {
+                if (request?.resources?.contains(android.webkit.PermissionRequest.RESOURCE_AUDIO_CAPTURE) == true) {
+                    request.grant(arrayOf(android.webkit.PermissionRequest.RESOURCE_AUDIO_CAPTURE))
+                }
+            }
         }
 
         webView.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+            override fun shouldOverrideUrlLoading(
+                view: WebView?,
+                request: WebResourceRequest?
+            ): Boolean {
                 view?.loadUrl(request?.url.toString())
                 return true
             }
@@ -99,13 +109,13 @@ class BookShelfWebView : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == FILE_CHOOSER_RESULT_CODE) {
-            if (resultCode == Activity.RESULT_OK && data != null) {
+            mUploadMessage = if (resultCode == Activity.RESULT_OK && data != null) {
                 val result = if (data.data != null) arrayOf(data.data!!) else null
                 mUploadMessage?.onReceiveValue(result)
-                mUploadMessage = null
+                null
             } else {
                 mUploadMessage?.onReceiveValue(null)
-                mUploadMessage = null
+                null
             }
         }
     }

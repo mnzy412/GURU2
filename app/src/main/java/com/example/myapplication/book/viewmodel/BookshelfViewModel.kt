@@ -27,6 +27,7 @@ class BookshelfViewModel : ViewModel() {
 
     @OptIn(DelicateCoroutinesApi::class)
     fun fetchBookshelfData() {
+        Log.d(TAG, "fetchBookshelfData")
         val list = mutableListOf<BookshelfDTO>()
         GlobalScope.launch(Dispatchers.IO) {
             val query =
