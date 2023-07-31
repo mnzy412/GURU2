@@ -1,27 +1,30 @@
 
 package com.example.myapplication.record
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.myapplication.MypageRVAdpater
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentRecordBinding
-import com.example.myapplication.mypage.Mypage
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.firestore.FirebaseFirestore
 
-class RecordFragment : Fragment() {
+class RecordFragment : Fragment(){
     lateinit var viewBinding: FragmentRecordBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val recordList: ArrayList<Record> = arrayListOf()
+
 
         val AddRecordBtn: FloatingActionButton = view.findViewById(R.id.AddRecordBtn) //기록 추가 버튼 누르면 액티비티로 이동
 
@@ -31,6 +34,8 @@ class RecordFragment : Fragment() {
         }
 
     }
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -242,4 +247,5 @@ class RecordFragment : Fragment() {
 
         return viewBinding.root
     }
+
 }
