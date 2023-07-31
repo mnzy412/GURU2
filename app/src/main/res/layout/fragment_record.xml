@@ -69,10 +69,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recordRV"
-        android:layout_width="387dp"
-        android:layout_height="563dp"
+        android:layout_width="384dp"
+        android:layout_height="520dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/color8"
         android:clipToPadding="false"
         android:orientation="vertical"
@@ -81,8 +81,10 @@
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/record_toolbar"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/list_item_record1" />
 
 
