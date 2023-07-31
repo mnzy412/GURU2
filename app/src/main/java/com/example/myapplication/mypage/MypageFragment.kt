@@ -82,6 +82,9 @@ class MypageFragment : Fragment() {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         }
 
+        viewBinding.mypageBtnQuit.setOnClickListener() {
+            Firebase.auth.currentUser?.delete()
+        }
         return viewBinding.root
 
     }
