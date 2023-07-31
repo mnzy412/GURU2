@@ -124,6 +124,7 @@ class CalendarFragment : Fragment() {
 
         container.view.setOnClickListener {
             val intent = Intent(requireContext(), CalendarDetailActivity::class.java)
+            intent.putExtra("year", day.date.year)
             intent.putExtra("month", day.date.month.value)
             intent.putExtra("day", day.date.dayOfMonth)
             startActivity(intent)

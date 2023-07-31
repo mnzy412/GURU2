@@ -27,8 +27,9 @@ data class BookshelfDTO(
 ) {
     @RequiresApi(Build.VERSION_CODES.O)
     fun readOnDate(date: LocalDate): Boolean {
-        val data =  read_history.any {
-            val localDate = it.datetime.toDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+        val data = read_history.any {
+            val localDate =
+                it.datetime.toDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
             localDate.isEqual(date) && it.amount > 0
         }
         Log.d("BookshelfDTO", "readOnDate: $data")

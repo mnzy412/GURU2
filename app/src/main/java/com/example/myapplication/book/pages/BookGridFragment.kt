@@ -12,7 +12,7 @@ import android.widget.GridView
 import android.widget.Toast
 import com.example.myapplication.BookShelfWebView
 import com.example.myapplication.R
-import com.example.myapplication.book.adapter.BookshelfGridViewAdapter
+import com.example.myapplication.adapter.BookshelfGridViewAdapter
 import com.example.myapplication.book.viewmodel.BookshelfViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
