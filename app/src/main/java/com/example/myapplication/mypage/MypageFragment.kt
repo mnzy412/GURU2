@@ -82,8 +82,6 @@ class MypageFragment : Fragment() {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         }
 
-
-
         return viewBinding.root
 
     }
