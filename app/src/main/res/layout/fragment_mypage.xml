@@ -118,32 +118,22 @@
                         android:layout_marginTop="20dp"
                         android:orientation="vertical">
 
-                        <Button
-                            android:id="@+id/mypage_btn_1"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:backgroundTint="#FFFFFF"
-                            android:fontFamily="@font/pre_r"
-                            android:gravity="center_vertical"
-                            android:text="알림 설정"
-                            android:textColor="#565656"
-                            app:layout_constraintStart_toStartOf="parent" />
+
 
                         <Button
-                            android:id="@+id/mypage_btn_2"
+                            android:id="@+id/mypage_btn_change"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:backgroundTint="#FFFFFF"
                             android:fontFamily="@font/pre_r"
                             android:gravity="center_vertical"
-                            android:text="비빌번호 변경"
+                            android:text="비빌번호 설정"
                             android:textColor="#565656"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/mypage_btn_1" />
+                            app:layout_constraintStart_toStartOf="parent"/>
 
                         <Button
-                            android:id="@+id/mypage_btn_3"
+                            android:id="@+id/mypage_btn_logout"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:layout_marginTop="0dp"
@@ -155,7 +145,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/mypage_btn_2" />
+                            app:layout_constraintTop_toBottomOf="@+id/mypage_btn_change" />
 
                         <Button
                             android:id="@+id/mypage_btn_4"
@@ -170,25 +160,11 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/mypage_btn_3" />
+                            app:layout_constraintTop_toBottomOf="@+id/mypage_btn_logout" />
+
 
                         <Button
-                            android:id="@+id/mypage_btn_5"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_marginTop="0dp"
-                            android:backgroundTint="#FFFFFF"
-                            android:fontFamily="@font/pre_r"
-                            android:gravity="center_vertical"
-                            android:text="이용약관"
-                            android:textColor="#565656"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/mypage_btn_4" />
-
-                        <Button
-                            android:id="@+id/mypage_btn_logout"
+                            android:id="@+id/mypage_btn_quit"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:layout_marginTop="20dp"
@@ -202,7 +178,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/mypage_btn_5" />
+                            app:layout_constraintTop_toBottomOf="@+id/mypage_btn_4" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
