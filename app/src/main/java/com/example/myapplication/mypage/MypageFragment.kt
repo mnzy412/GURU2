@@ -1,7 +1,9 @@
 package com.example.myapplication.mypage
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -76,20 +78,38 @@ class MypageFragment : Fragment() {
 //        }
 
         viewBinding.mypageBtnLogout.setOnClickListener(){
-            Firebase.auth.signOut()
-            var intent=Intent(context, LoginActivity::class.java) //로그인 페이지 이동
-            startActivity(intent)
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            showLogoutConfirmationDialog()
+
         }
 
         viewBinding.mypageBtnQuit.setOnClickListener() {
-            var intent=Intent(context, MypageQuitActivity::class.java) //로그인 페이지 이동
+            var intent=Intent(activity, MypageQuitActivity::class.java) //로그인 페이지 이동
             startActivity(intent)
         }
+
+
         return viewBinding.root
 
     }
 
+    private fun showLogoutConfirmationDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("로그아웃")
+            .setMessage("로그아웃 하시겠습니까?")
+            .setPositiveButton("로그아웃") { _, _ ->
+                // 사용자가 확인 버튼을 누른 경우 로그아웃 처리
+                Firebase.auth.signOut()
+                val intent = Intent(activity, LoginActivity::class.java) //로그인 페이지 이동
+                startActivity(intent)
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+
+            }
+            .setNegativeButton("취소", null)
+            .show()
+    }
+
+
 
 }
+
 

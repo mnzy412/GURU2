@@ -5,18 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color1"
-    tools:context=".LoginActivity">
+    tools:context=".mypage.MypageRealQuitActivity">
+ >
 
 
-    <ImageView
-        android:id="@+id/logoImg"
-        android:layout_width="79dp"
-        android:layout_height="119dp"
-        android:background="@drawable/booktory1"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ImageButton
+        android:id="@+id/quit_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        android:background="@color/transparent"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/baseline_close_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_quit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/pre_semibold"
+        android:text="회원탈퇴"
+        android:textColor="@color/black1"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/quit_close"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="회원탈퇴를 하기 전 인증을 위해\n이메일과 비밀번호를 입력해주세요"
+        android:textColor="@color/color8"
+        android:textSize="18dp"
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -28,7 +61,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/loginEmail"
+            android:id="@+id/deleteEmail"
             android:layout_width="284dp"
             android:layout_height="wrap_content"
             android:hint="이메일"
@@ -47,7 +80,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/loginPwd"
+            android:id="@+id/deletePwd"
             android:layout_width="284dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -56,7 +89,7 @@
             app:hintTextColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginEmail">
+            app:layout_constraintTop_toBottomOf="@+id/deleteEmail">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pwdEt"
@@ -71,28 +104,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/loginBtn"
+        android:id="@+id/deleteBtn"
         android:layout_width="284dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
-        android:text="로그인"
+        android:text="탈퇴하기"
         android:background="@color/color3"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/registerBtn"
-        android:layout_width="284dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:text="회원가입"
-        android:background="@color/color2"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
