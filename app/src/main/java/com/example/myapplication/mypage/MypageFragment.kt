@@ -10,13 +10,18 @@ import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.LoginActivity
 import com.example.myapplication.MypageRVAdpater
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentMypageBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 @Suppress("UNREACHABLE_CODE")
 class MypageFragment : Fragment() {
     private lateinit var viewBinding: FragmentMypageBinding
+    lateinit var Auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,6 +30,8 @@ class MypageFragment : Fragment() {
 
     ): View? {
         viewBinding = FragmentMypageBinding.inflate(layoutInflater)
+        Auth = Firebase.auth
+
 
         val mypageList: ArrayList<Mypage> = arrayListOf()
         val mAdapter = MypageRVAdpater(mypageList)
@@ -67,8 +74,20 @@ class MypageFragment : Fragment() {
 //        mAdapter!!.itemClick = object : MypageRVAdpater.ItemClick {
 //
 //        }
+
+        viewBinding.mypageBtnLogout.setOnClickListener(){
+            Firebase.auth.signOut()
+            var intent=Intent(context, LoginActivity::class.java) //로그인 페이지 이동
+            startActivity(intent)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        }
+
+
+
         return viewBinding.root
 
     }
+
+
 }
 
