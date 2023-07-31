@@ -1,8 +1,10 @@
 package com.example.myapplication.book.pages
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +13,11 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
+import com.example.myapplication.CalendarDetailActivity
 import com.example.myapplication.R
-import com.example.myapplication.databinding.FragmentBookBinding
+import com.example.myapplication.book.viewmodel.BookshelfViewModel
 import com.example.myapplication.databinding.FragmentCalendarBinding
 import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.CalendarMonth
@@ -31,6 +36,7 @@ import java.util.Locale
 class CalendarFragment : Fragment() {
 
     private lateinit var binding: FragmentCalendarBinding
+    private val viewModel: BookshelfViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -39,85 +45,101 @@ class CalendarFragment : Fragment() {
     ): View {
         binding = FragmentCalendarBinding.inflate(layoutInflater)
 
-        binding.calendarView.dayBinder = object : MonthDayBinder<DayViewContainer> {
-            // Called only when a new container is needed.
-            override fun create(view: View) = DayViewContainer(view)
-
-            // Called every time we need to reuse a container.
-            override fun bind(container: DayViewContainer, data: CalendarDay) {
-                container.textView.text = data.date.dayOfMonth.toString()
-            }
-        }
+        setupDayBinder()
+        setupMonthBinder()
 
         val currentMonth = YearMonth.now()
-        val startMonth = currentMonth.minusMonths(100)  // Adjust as needed
-        val endMonth = currentMonth.plusMonths(100)  // Adjust as needed
-        val firstDayOfWeek = firstDayOfWeekFromLocale() // Available from the library
-
+        val startMonth = currentMonth.minusMonths(100)
+        val endMonth = currentMonth.plusMonths(100)
+        val firstDayOfWeek = firstDayOfWeekFromLocale()
         val daysOfWeek = daysOfWeek(firstDayOfWeek = DayOfWeek.SUNDAY)
-
-        val view = inflater.inflate(R.layout.fragment_calendar, container, false)
-        val titlesContainer = view.findViewById<ViewGroup>(R.id.titlesContainer)
-        titlesContainer.children
-            .map { it as TextView }
-            .forEachIndexed { index, textView ->
-                val dayOfWeek = daysOfWeek[index]
-                val title = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.KOREA)
-                textView.text = title
-            }
-
-        binding.calendarView.dayBinder = object : MonthDayBinder<DayViewContainer> {
-            override fun create(view: View) = DayViewContainer(view)
-            override fun bind(container: DayViewContainer, day: CalendarDay) {
-                container.textView.text = day.date.dayOfMonth.toString()
-
-                // 특정 날짜에 이미지를 설정하는 예시입니다.
-                val dateWithImage = "2023-07-15" // 이미지를 넣고 싶은 특정 날짜 (날짜 형식은 알맞게 변경하세요)
-                if (day.date.toString() == dateWithImage) {
-                    container.imageView.setImageResource(R.drawable.book_sample) // 이미지 리소스 설정
-                } else {
-                    container.imageView.setImageDrawable(null) // 다른 날짜는 이미지를 제거하여 비웁니다.
-                }
-
-                if (day.position == DayPosition.MonthDate) {
-                    container.textView.setTextColor(Color.BLACK)
-                } else {
-                    container.textView.setTextColor(resources.getColor(R.color.tab_select_text))
-                }
-
-                // 오늘 날짜에 동그란 원을 표시하는 예시입니다.
-                val isToday = day.date == LocalDate.now()
-//                if (isToday) {
-//                    container.circleView.visibility = View.VISIBLE
-//                } else {
-//                    container.circleView.visibility = View.GONE
-//                }
-            }
-        }
-
-        binding.calendarView.monthHeaderBinder =
-            object : MonthHeaderFooterBinder<MonthViewContainer> {
-                override fun create(view: View) = MonthViewContainer(view)
-                override fun bind(container: MonthViewContainer, data: CalendarMonth) {
-                    if (container.titlesContainer.tag == null) {
-                        container.titlesContainer.tag = data.yearMonth
-                        container.titlesContainer.children.map { it as TextView }
-                            .forEachIndexed { index, textView ->
-                                val dayOfWeek = daysOfWeek()[index]
-                                val title =
-                                    dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.KOREA)
-                                textView.text = title
-                            }
-                    }
-                }
-            }
 
         binding.calendarView.setup(startMonth, endMonth, daysOfWeek.first())
         binding.calendarView.scrollToMonth(currentMonth)
 
+        binding.calendarView.monthScrollListener = { month ->
+
+            val yearMonth = month.yearMonth
+            val year = yearMonth.year
+            val monthKo = yearMonth.month.getDisplayName(TextStyle.FULL, Locale.KOREA)
+
+            val title = "${year}년 $monthKo"
+            binding.monthYearTextView.text = title
+        }
+
+
+        viewModel.getBookshelfData().observe(viewLifecycleOwner) { bookshelfList ->
+            updateDayBinder()
+        }
+
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.fetchBookshelfData()
+    }
+
+    private fun setupDayBinder() {
+        binding.calendarView.dayBinder = object : MonthDayBinder<DayViewContainer> {
+            override fun create(view: View) = DayViewContainer(view)
+
+            @RequiresApi(Build.VERSION_CODES.O)
+            override fun bind(container: DayViewContainer, data: CalendarDay) {
+                container.textView.text = data.date.dayOfMonth.toString()
+            }
+        }
+    }
+
+    private fun setupMonthBinder() {
+        binding.calendarView.monthHeaderBinder =
+            object : MonthHeaderFooterBinder<MonthViewContainer> {
+                override fun create(view: View) = MonthViewContainer(view)
+
+                @RequiresApi(Build.VERSION_CODES.O)
+                override fun bind(container: MonthViewContainer, data: CalendarMonth) {
+                    container.titlesContainer.children.map { it as TextView }
+                        .forEachIndexed { index, textView ->
+                            val dayOfWeek = daysOfWeek()[index]
+                            val title = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.KOREA)
+                            textView.text = title
+                        }
+                }
+            }
+    }
+
+    private fun updateDayBinder() {
+        binding.calendarView.dayBinder = object : MonthDayBinder<DayViewContainer> {
+            override fun create(view: View) = DayViewContainer(view)
+
+            @RequiresApi(Build.VERSION_CODES.O)
+            override fun bind(container: DayViewContainer, day: CalendarDay) {
+                updateDayView(container, day)
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun updateDayView(container: DayViewContainer, day: CalendarDay) {
+
+        container.view.setOnClickListener {
+            val intent = Intent(requireContext(), CalendarDetailActivity::class.java)
+            intent.putExtra("month", day.date.month.value)
+            intent.putExtra("day", day.date.dayOfMonth)
+            startActivity(intent)
+        }
+
+        container.textView.text = day.date.dayOfMonth.toString()
+
+        viewModel.getBookshelfData().value?.firstOrNull { it.readOnDate(day.date) }?.let {
+            Glide.with(requireContext()).load(it.thumbnail).into(container.imageView)
+        } ?: container.imageView.setImageDrawable(null)
+
+        container.textView.setTextColor(
+            if (day.position == DayPosition.MonthDate) Color.BLACK
+            else resources.getColor(R.color.tab_select_text)
+        )
+    }
 }
 
 /**
@@ -133,7 +155,6 @@ class DayViewContainer(view: View) : ViewContainer(view) {
 }
 
 class MonthViewContainer(view: View) : ViewContainer(view) {
-    // Alternatively, you can add an ID to the container layout and use findViewById()
     val titlesContainer = view as ViewGroup
 }
 
