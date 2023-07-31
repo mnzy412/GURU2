@@ -50,8 +50,8 @@
 
     <ImageView
         android:id="@+id/photo"
-        android:layout_width="408dp"
-        android:layout_height="387dp"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
         android:layout_marginTop="65dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
