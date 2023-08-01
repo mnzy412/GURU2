@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import com.example.myapplication.R
 
@@ -21,10 +22,17 @@ class MypagePwChangeActivity : AppCompatActivity() {
     private lateinit var loginBtn : Button
     private lateinit var emailEt : EditText
     private lateinit var pwdEt : EditText
+    lateinit var quit_close : ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage_pw_change)
+
+        quit_close = findViewById(R.id.quit_close)
+        quit_close.setOnClickListener {    //이전 화면으로 돌아가기
+            var intent = Intent(this, MypageFragment::class.java)
+            startActivity(intent)
+        }
 
         loginBtn = findViewById(R.id.loginBtn)
         emailEt = findViewById(R.id.emailEt)

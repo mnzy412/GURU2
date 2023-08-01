@@ -1,11 +1,14 @@
 package com.example.myapplication.mypage
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import com.example.myapplication.R
+import com.example.myapplication.record.BookAddActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -15,10 +18,17 @@ class MyPagePwChangeActivity2 : AppCompatActivity() {
     private lateinit var pwdEt: EditText
     private lateinit var pwdEt2: EditText
     private lateinit var confirmBtn: Button
+    lateinit var quit_close : ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page_pw_change2)
+
+        quit_close = findViewById(R.id.quit_close)
+        quit_close.setOnClickListener {    //이전 화면으로 돌아가기
+            var intent = Intent(this, MypagePwChangeActivity::class.java)
+            startActivity(intent)
+        }
 
         newPassword = intent.getStringExtra("newPassword") ?: ""
         pwdEt = findViewById(R.id.pwdEt)
