@@ -1,0 +1,36 @@
+.react-calendar {
+    background: none;
+    border: none;
+    margin: 0 auto;
+    padding-top: 16px;
+}
+
+.react-calendar__navigation__label__labelText {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.react-calendar__month-view__weekdays__weekday>abbr {
+    text-decoration: none;
+    color: #000;
+}
+
+.react-calendar__tile {
+    font-weight: bold;
+}
+
+.react-calendar__tile--active:enabled:hover {
+    background: #C8B8A9;
+    border-radius: 12px;
+}
+
+.today > abbr {
+    border-radius: 50%;
+    background-color: #A1816E;
+    padding: 8px;
+    font-size: 16px;
+    /* 원의 색상을 원하는 색상으로 변경하세요 */
+    color: black;
+    /* 텍스트 색상을 원하는 색상으로 변경하세요 */
+    /* 기타 원의 스타일을 설정하세요 */
+}
