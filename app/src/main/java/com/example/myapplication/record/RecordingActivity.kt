@@ -32,7 +32,8 @@ class RecordingActivity : AppCompatActivity() {
             var intent = Intent(this, BookAddActivity::class.java)
             startActivity(intent)
         }
-        //초기화
+
+        //입력창
         resultText = findViewById(R.id.result_text)
 
         //음성전환 버튼 이벤트
@@ -52,6 +53,7 @@ class RecordingActivity : AppCompatActivity() {
 
             if(intent.resolveActivity(packageManager) != null){
                 //음성 -> 텍스트 전환
+                activityResult.launch(intent)
             } else {
                 Toast.makeText(this, "당신의 장비가 음성을 텍스트로 변경하지 못합니다.",
                     Toast.LENGTH_SHORT).show()

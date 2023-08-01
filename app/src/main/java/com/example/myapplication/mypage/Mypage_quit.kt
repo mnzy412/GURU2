@@ -14,10 +14,9 @@ class Mypage_quit: AppCompatActivity() {
     private lateinit var mDbRef: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.mypage_quit)
+      // setContentView(R.layout.mypage_quit)
     }
-
-//    val deleteBtn = findViewById<Button>(R.id.btn_delete)
+    //val deleteBtn = findViewById<Button>(R.id.btn_delete)
 //        deleteBtn.setOnClickListener {
 //
 //        val nickname = viewBinding.nicknameEt.text.toString()

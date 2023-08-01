@@ -3,23 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:background="@color/tab_unselect"
+    tools:context=".CalendarDetailActivity">
 
-    <TextView
-        android:id="@+id/monthTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_margin="10dp"
-        android:textSize="24sp"
-        tools:text="Month" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_horizontal_picker"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        tools:title="4월 3일"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        tools:itemCount="5"
-        tools:listitem="@layout/row_view_picker_item" />
+        android:layout_height="?attr/actionBarSize" />
+
+    <GridView
+        android:paddingHorizontal="16dp"
+        android:id="@+id/home_book_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/black"
+        android:gravity="center"
+        android:numColumns="3"
+        android:padding="8dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="12dp"
+        tools:listitem="@layout/home_gridview_item" />
 
 </LinearLayout>

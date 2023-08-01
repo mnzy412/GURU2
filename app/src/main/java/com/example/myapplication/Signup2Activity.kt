@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import com.example.myapplication.databinding.ActivitySignup2Binding
 import com.example.myapplication.databinding.ActivitySignupBinding
+import com.example.myapplication.mypage.MypagePwChangeActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -43,6 +44,10 @@ class Signup2Activity : AppCompatActivity() {
 
             signup(nickname, email, password)
 
+        }
+
+        viewBinding.registerBackBtn.setOnClickListener {    //이전 화면으로 돌아가기
+            finish()
         }
 
         setContentView(viewBinding.root)

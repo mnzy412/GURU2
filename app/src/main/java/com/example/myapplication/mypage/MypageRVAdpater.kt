@@ -8,22 +8,26 @@ import com.example.myapplication.databinding.ListItemMypageBinding
 import com.example.myapplication.mypage.Mypage
 
 
-class MypageRVAdpater (private val mypageList: ArrayList<Mypage>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class MypageRVAdpater(private val mypageList: List<Mypage>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var itemClick: MypageRVAdpater.ItemClick? = null
 
-
-    inner class MypageViewHolder(val viewBinding:ListItemMypageBinding):
-            RecyclerView.ViewHolder(viewBinding.root) {
-            fun bind(mypage: Mypage) {
-                viewBinding.titleTv.text = mypage.title
+    inner class MypageViewHolder(val viewBinding: ListItemMypageBinding) :
+        RecyclerView.ViewHolder(viewBinding.root) {
+        fun bind(mypage: Mypage) {
+            viewBinding.titleTv.text = mypage.title
+            if(mypage.title == "독서 시간"){
+                viewBinding.numTv.text = formatSecondsToHMS(mypage.num)
+            }else{
                 viewBinding.numTv.text = mypage.num.toString()
-                viewBinding.subTv.text = mypage.sub
             }
-            }
+            viewBinding.subTv.text = mypage.sub
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = ListItemMypageBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val view = ListItemMypageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MypageViewHolder(view)
     }
 
@@ -34,7 +38,19 @@ class MypageRVAdpater (private val mypageList: ArrayList<Mypage>): RecyclerView.
     override fun getItemCount(): Int = mypageList.size
 
     interface ItemClick {
-        fun onClick (view: View, position: Int)
+        fun onClick(view: View, position: Int)
+    }
+
+    private fun formatSecondsToHMS(seconds: Int): String {
+        val h = seconds / 3600
+        val m = (seconds % 3600) / 60
+        val s = seconds % 60
+
+        return buildString {
+            if (h > 0) append("${h}시 ")
+            if (m > 0 || h > 0) append("${m}분 ")
+            append("${s}초")
+        }
     }
 
 

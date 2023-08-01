@@ -9,7 +9,7 @@ import com.example.myapplication.databinding.ListItemRecord2Binding
 import com.example.myapplication.record.Const.HASIMAGE
 import com.example.myapplication.record.Const.NOIMAGE
 
-class RecordRVAdapter(private val recordList: ArrayList<Record>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class RecordRVAdapter(private val recordList: ArrayList<com.example.myapplication.record.Record>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     var itemClick: RecordRVAdapter.ItemClick? = null
 
@@ -30,6 +30,7 @@ class RecordRVAdapter(private val recordList: ArrayList<Record>): RecyclerView.A
             viewBinding2.userName.text = record.userName
         }
     }
+
 
     override fun getItemViewType(position: Int): Int {
         return if (recordList[position].hasImage==HasImage.TRUE) HASIMAGE else NOIMAGE
@@ -75,6 +76,7 @@ class RecordRVAdapter(private val recordList: ArrayList<Record>): RecyclerView.A
     }
 
 }
+
 
 object Const {
     const val HASIMAGE = 0

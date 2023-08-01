@@ -5,6 +5,7 @@ import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.webkit.JavascriptInterface
+import android.widget.Toast
 
 class GuruJavaScriptInterface (
     private val activity: Activity,
@@ -18,6 +19,13 @@ class GuruJavaScriptInterface (
     @JavascriptInterface
     fun close(){
         activity.finish()
+    }
+
+    @JavascriptInterface
+    fun showToast(text: String){
+        activity.runOnUiThread {
+            Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
+        }
     }
 
 }
