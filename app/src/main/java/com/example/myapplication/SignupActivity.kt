@@ -12,6 +12,9 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = ActivitySignupBinding.inflate(layoutInflater)
 
+        viewBinding.registerBackBtn.setOnClickListener {    //이전 화면으로 돌아가기
+            finish()
+        }
 
         viewBinding.signupNextBtn.setOnClickListener { //인증번호 입력 화면 이동
             val intent = Intent (this, Signup2Activity::class.java)

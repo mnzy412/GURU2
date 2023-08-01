@@ -12,14 +12,25 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.myapplication.MypageRVAdpater
 import com.example.myapplication.R
+import com.example.myapplication.User
 import com.example.myapplication.databinding.FragmentRecordBinding
 import com.example.myapplication.mypage.Mypage
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class RecordFragment : Fragment() {
     lateinit var viewBinding: FragmentRecordBinding
+    private lateinit var Auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var database: DatabaseReference // realtime db
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -70,4 +81,18 @@ class RecordFragment : Fragment() {
         viewBinding.recordRV.layoutManager = StaggeredGridLayoutManager (2, LinearLayoutManager.VERTICAL)
         viewBinding.recordRV.adapter = rAdapter
     }
+
+//    private fun getUserNickname() {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            try {
+//                val data = database.child("user").child(Auth.currentUser!!.uid).get().await()
+//                CoroutineScope(Dispatchers.Main).launch {
+//                    val nickname = data.getValue<User>()?.nickname ?: ""
+//                }
+//            } catch (e: Error) {
+//                throw e
+//            }
+//        }
+//
+//    }
 }
