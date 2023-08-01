@@ -1,6 +1,5 @@
 package com.example.myapplication.record
 
-import RecordFragment
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
