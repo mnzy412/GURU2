@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".record.BookAddActivity">
+    tools:context=".record.BookAddActivity"
+    android:background="@color/white">
 
     <androidx.appcompat.widget.Toolbar
-        android:backgroundTint="@color/color1"
+        android:backgroundTint="@color/white"
         android:id="@+id/record_toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -22,7 +23,7 @@
             >
 
             <ImageButton
-                android:backgroundTint="@color/color1"
+                android:backgroundTint="@color/white"
                 android:id="@+id/record_backBtn"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"

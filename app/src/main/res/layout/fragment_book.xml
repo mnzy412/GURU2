@@ -9,15 +9,14 @@
         android:id="@+id/user_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="60dp"
-        android:text="내 책장"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="43dp"
         android:fontFamily="@font/font_write"
+        android:text="내 책장"
         android:textColor="@color/color5"
         android:textSize="45sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/search_btn"

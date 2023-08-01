@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".record.RecordingActivity">
+    tools:context=".record.RecordingActivity"
+    android:background="@color/color1">
 
     <androidx.appcompat.widget.Toolbar
-        android:backgroundTint="@color/color1"
+        android:backgroundTint="@color/white"
         android:id="@+id/register_toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -22,7 +23,7 @@
             >
 
             <ImageButton
-                android:backgroundTint="@color/color1"
+                android:backgroundTint="@color/white"
                 android:id="@+id/record_backBtn"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
@@ -67,8 +68,10 @@
         android:id="@+id/result_text"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="54dp"
-        android:textSize="25sp"
+        android:textColor="@color/color8"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/speak_image" />
@@ -84,6 +87,7 @@
         android:contentDescription="녹음"
         android:scaleType="fitCenter"
         android:src="@drawable/baseline_radio_button_checked_24"
+        android:tint="@color/color5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
