@@ -20,8 +20,8 @@ const AuthProvider: React.FC<{ children: React.ReactElement }> = ({ children }) 
     };
 
     useEffect(() => {
-        const userUid = "lnPtS5jEIWOnJeX4Dh6ntwioao42";
-        // const userUid = (window as any).AndroidGuru2.getUserUid();
+        // const userUid = "lnPtS5jEIWOnJeX4Dh6ntwioao42";
+        const userUid = (window as any).AndroidGuru2.getUserUid();
         setUid(userUid);
     }, []);
 
