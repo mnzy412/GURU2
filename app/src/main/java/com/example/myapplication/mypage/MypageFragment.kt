@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -81,7 +80,7 @@ class MypageFragment : Fragment() {
                 add(Mypage("보관된 책", myPageData.bookShelfCount, "권"))
                 add(Mypage("완독한 책", myPageData.bookReadCount, "권"))
                 add(Mypage("독서 시간", myPageData.bookReadTimeAmount.toInt(), ""))
-                add(Mypage("메모", myPageData.memoCount, "개"))
+                add(Mypage("기록", myPageData.memoCount, "개"))
             }
             val mAdapter = MypageRVAdpater(myPageList)
 
