@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +12,11 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.myapplication.CalendarDetailActivity
 import com.example.myapplication.R
-import com.example.myapplication.book.viewmodel.BookshelfViewModel
+import com.example.myapplication.viewmodel.BookshelfViewModel
 import com.example.myapplication.databinding.FragmentCalendarBinding
 import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.CalendarMonth
@@ -28,7 +27,6 @@ import com.kizitonwose.calendar.view.MonthDayBinder
 import com.kizitonwose.calendar.view.MonthHeaderFooterBinder
 import com.kizitonwose.calendar.view.ViewContainer
 import java.time.DayOfWeek
-import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.TextStyle
 import java.util.Locale
@@ -36,7 +34,7 @@ import java.util.Locale
 class CalendarFragment : Fragment() {
 
     private lateinit var binding: FragmentCalendarBinding
-    private val viewModel: BookshelfViewModel by viewModels()
+    private lateinit var bookshelfViewModel: BookshelfViewModel
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -44,6 +42,10 @@ class CalendarFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCalendarBinding.inflate(layoutInflater)
+
+        bookshelfViewModel = activity?.run {
+            ViewModelProvider(this)[BookshelfViewModel::class.java]
+        } ?: throw Exception("Invalid Activity")
 
         setupDayBinder()
         setupMonthBinder()
@@ -68,7 +70,7 @@ class CalendarFragment : Fragment() {
         }
 
 
-        viewModel.getBookshelfData().observe(viewLifecycleOwner) { bookshelfList ->
+        bookshelfViewModel.getBookshelfData().observe(viewLifecycleOwner) { bookshelfList ->
             updateDayBinder()
         }
 
@@ -77,7 +79,7 @@ class CalendarFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.fetchBookshelfData()
+        bookshelfViewModel.fetchBookshelfData()
     }
 
     private fun setupDayBinder() {
@@ -132,7 +134,7 @@ class CalendarFragment : Fragment() {
 
         container.textView.text = day.date.dayOfMonth.toString()
 
-        viewModel.getBookshelfData().value?.firstOrNull { it.readOnDate(day.date) }?.let {
+        bookshelfViewModel.getBookshelfData().value?.firstOrNull { it.readOnDate(day.date) }?.let {
             Glide.with(requireContext()).load(it.thumbnail).into(container.imageView)
         } ?: container.imageView.setImageDrawable(null)
 

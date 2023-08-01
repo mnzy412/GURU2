@@ -19,7 +19,7 @@ class BookFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentBookBinding.inflate(layoutInflater)
 
         // 책 검색 버튼

@@ -2,14 +2,16 @@ package com.example.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.example.myapplication.book.BookFragment
+import com.example.myapplication.viewmodel.BookshelfViewModel
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.mypage.MypageFragment
 import com.example.myapplication.record.RecordFragment
 
-
-
 class MainActivity : AppCompatActivity() {
+
+    private val bookshelfViewModel: BookshelfViewModel by viewModels()
 
     private lateinit var viewBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(viewBinding.root)
+
+        bookshelfViewModel.fetchBookshelfData()
 
         viewBinding.bottomNavi.run {
 
@@ -29,6 +33,7 @@ class MainActivity : AppCompatActivity() {
                             .replace(viewBinding.frameFragment.id, BookFragment())
                             .commitAllowingStateLoss()
                     }
+
                     R.id.bottom_record -> {
                         supportFragmentManager
                             .beginTransaction()

@@ -1,18 +1,14 @@
 package com.example.myapplication
 
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.widget.AdapterView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
 import com.example.myapplication.adapter.BookshelfGridViewAdapter
-import com.example.myapplication.book.viewmodel.BookshelfViewModel
+import com.example.myapplication.viewmodel.BookshelfViewModel
 import com.example.myapplication.databinding.ActivityCalendarDetailBinding
 import com.example.myapplication.model.data.BookshelfDTO
 import java.time.LocalDate
@@ -20,11 +16,12 @@ import java.time.ZoneId
 
 class CalendarDetailActivity : AppCompatActivity() {
 
-    private val viewModel: BookshelfViewModel by viewModels()
-
     // binding
     private lateinit var binding: ActivityCalendarDetailBinding
     private lateinit var date: LocalDate
+
+    private val bookshelfViewModel: BookshelfViewModel by viewModels()
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +29,7 @@ class CalendarDetailActivity : AppCompatActivity() {
         binding = ActivityCalendarDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.fetchBookshelfData()
+        bookshelfViewModel.fetchBookshelfData()
 
         val year = intent.getIntExtra("year", 0)
         val month = intent.getIntExtra("month", 0)
@@ -51,11 +48,11 @@ class CalendarDetailActivity : AppCompatActivity() {
         binding.toolBar.title = "${month}월 ${day}일에 읽은 책"
 
         date = LocalDate.of(year, month, day)
-        viewModel.getBookshelfData().observe(this) { bookshelfList ->
+        bookshelfViewModel.getBookshelfData().observe(this) { bookshelfList ->
             setupAdapter(bookshelfList)
         }
 
-        setupAdapter(viewModel.getBookshelfData().value ?: emptyList())
+        setupAdapter(bookshelfViewModel.getBookshelfData().value ?: emptyList())
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
