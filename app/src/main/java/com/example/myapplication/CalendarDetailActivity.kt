@@ -1,90 +1,95 @@
 package com.example.myapplication
 
-import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import com.google.android.material.snackbar.Snackbar
+import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSmoothScroller
-import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SnapHelper
-import com.example.myapplication.adapter.PickerAdapter
-import com.example.myapplication.adapter.PickerLayoutManager
+import com.example.myapplication.adapter.BookshelfGridViewAdapter
+import com.example.myapplication.viewmodel.BookshelfViewModel
 import com.example.myapplication.databinding.ActivityCalendarDetailBinding
-import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.utils.ScreenUtils
+import com.example.myapplication.model.data.BookshelfDTO
+import java.time.LocalDate
+import java.time.ZoneId
 
 class CalendarDetailActivity : AppCompatActivity() {
 
-    private val data = (1..10).toList()
-        .map { it.toString() } as ArrayList<String>
-    private lateinit var rvHorizontalPicker: RecyclerView
-    private lateinit var sliderAdapter: PickerAdapter
-
     // binding
-//    private lateinit var binding: ActivityCalendarDetailBinding
+    private lateinit var binding: ActivityCalendarDetailBinding
+    private lateinit var date: LocalDate
+
+    private val bookshelfViewModel: BookshelfViewModel by viewModels()
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calendar_detail)
+        binding = ActivityCalendarDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val month = intent.getIntExtra("month", 1)
-        val day = intent.getIntExtra("day", 1)
+        bookshelfViewModel.fetchBookshelfData()
 
-        setPicker()
+        val year = intent.getIntExtra("year", 0)
+        val month = intent.getIntExtra("month", 0)
+        val day = intent.getIntExtra("day", 0)
 
-        /*
-        * for the below picker
-        * */
-//        numberPicker.value = 12
-//        numberPicker.minValue = 0
-//        numberPicker.setMaxValue(24)
+        if (year == 0 || month == 0 || day == 0) {
+            Toast.makeText(this, "잘못된 접근입니다.", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+
+        // set toolbar
+        setSupportActionBar(binding.toolBar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        binding.toolBar.title = "${month}월 ${day}일에 읽은 책"
+
+        date = LocalDate.of(year, month, day)
+        bookshelfViewModel.getBookshelfData().observe(this) { bookshelfList ->
+            setupAdapter(bookshelfList)
+        }
+
+        setupAdapter(bookshelfViewModel.getBookshelfData().value ?: emptyList())
     }
 
-    private fun setPicker() {
-        rvHorizontalPicker = findViewById(R.id.rv_horizontal_picker)
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setupAdapter(bookshelfList: List<BookshelfDTO>) {
+        Log.d("CalendarDetailActivity", "input ${bookshelfList.size}")
+        val list: List<BookshelfDTO> = getBookListByDate(bookshelfList, date)
+        Log.d("CalendarDetailActivity", list.toString())
+        binding.homeBookGridview.adapter = BookshelfGridViewAdapter(this, list)
+    }
 
-        // Setting the padding such that the items will appear in the middle of the screen
-        val padding: Int = ScreenUtils.getScreenWidth(this) / 2 - ScreenUtils.dpToPx(this, 40)
-        rvHorizontalPicker.setPadding(padding, 0, padding, 0)
-
-        // Setting layout manager
-        rvHorizontalPicker.layoutManager = PickerLayoutManager(this).apply {
-            callback = object : PickerLayoutManager.OnItemSelectedListener {
-                override fun onItemSelected(layoutPosition: Int) {
-                    sliderAdapter.setSelectedItem(layoutPosition)
-                    Log.d("selected text", data[layoutPosition])
-                    Toast.makeText(this@CalendarDetailActivity, data[layoutPosition], Toast.LENGTH_SHORT)
-                        .show()
-                }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getBookListByDate(list: List<BookshelfDTO>, date: LocalDate): List<BookshelfDTO> {
+        return list.filter { book ->
+            book.read_history.any {
+                val localDate =
+                    it.datetime.toDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+                localDate.isEqual(date) && it.amount > 0
             }
+        }.map { book ->
+            book.copy(
+                read_history = book.read_history.filter {
+                    val localDate = it.datetime.toDate().toInstant().atZone(ZoneId.systemDefault())
+                        .toLocalDate()
+                    localDate.isEqual(date)
+                },
+                readtime = book.read_history.filter {
+                    val localDate = it.datetime.toDate().toInstant().atZone(ZoneId.systemDefault())
+                        .toLocalDate()
+                    localDate.isEqual(date)
+                }.sumOf { it.amount }
+            )
         }
+    }
 
-        // Setting Adapter
-        sliderAdapter = PickerAdapter()
-        rvHorizontalPicker.adapter = sliderAdapter.apply {
-            setData(data)
-            callback = object : PickerAdapter.Callback {
-                override fun onItemClicked(view: View) {
-                    rvHorizontalPicker.smoothScrollToPosition(
-                        rvHorizontalPicker.getChildLayoutPosition(
-                            view
-                        )
-                    )
-                }
-            }
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }
 

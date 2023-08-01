@@ -14,7 +14,7 @@ import com.google.firebase.ktx.Firebase
 class BookSearchWebView : AppCompatActivity() {
 
     // private val URL = "http://10.0.2.2:5173/book-search"
-    private val URL = "https://outsourcing-guru-book.vercel.app/book-search"
+    private val URL = "${Constants.WEB_SERVICE_URL}/book-search"
     private lateinit var webView: WebView
 
     lateinit var auth: FirebaseAuth
