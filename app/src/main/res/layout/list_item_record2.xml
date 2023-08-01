@@ -14,10 +14,11 @@
 
     <TextView
         android:id="@+id/content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
         android:ellipsize="end"
         android:fontFamily="@font/pre_m"
         android:maxWidth="170dp"
@@ -25,6 +26,7 @@
         android:text="구루가 너무 힘든 것 같다는 생각이 든다."
         android:textColor="@color/black"
         android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,7 +34,7 @@
         android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:text="김민지똥개"
@@ -43,11 +45,11 @@
         app:layout_constraintTop_toBottomOf="@+id/content" />
 
     <TextView
-        android:id="@+id/bookTitle"
+        android:id="@+id/book_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="10dp"
         android:ellipsize="end"
         android:maxWidth="100dp"

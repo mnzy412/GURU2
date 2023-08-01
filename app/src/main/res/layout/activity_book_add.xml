@@ -65,8 +65,8 @@
 
     <EditText
         android:id="@+id/review"
-        android:layout_width="380dp"
-        android:layout_height="380dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
@@ -76,6 +76,7 @@
         android:gravity="top"
         android:hint="  한 줄 평을 적어 주세요 :)"
         android:inputType="text"
+        android:padding="10dp"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/imgbtn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,8 +86,8 @@
 
     <Button
         android:id="@+id/imgbtn"
-        android:layout_width="377dp"
-        android:layout_height="52dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -102,8 +103,8 @@
 
     <Button
         android:id="@+id/bookSearch"
-        android:layout_width="377dp"
-        android:layout_height="52dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"

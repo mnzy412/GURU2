@@ -51,25 +51,27 @@
 
     <ImageView
         android:id="@+id/photo"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="452dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/bookpage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/bookpage" />
+        app:layout_constraintTop_toBottomOf="@+id/textBtn" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/textBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
         app:backgroundTint="@color/color3"
         app:layout_constraintBottom_toTopOf="@+id/photo"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/record_toolbar"
         app:srcCompat="@drawable/baseline_text_fields_24"
         tools:tint="@color/white" />
 

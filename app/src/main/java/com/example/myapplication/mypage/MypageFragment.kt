@@ -86,6 +86,10 @@ class MypageFragment : Fragment() {
             var intent=Intent(activity, MypageQuitActivity::class.java) //로그인 페이지 이동
             startActivity(intent)
         }
+        viewBinding.mypageBtnChange.setOnClickListener() {
+            var intent=Intent(activity, MypagePwChangeActivity::class.java)
+            startActivity(intent)
+        }
 
 
         return viewBinding.root

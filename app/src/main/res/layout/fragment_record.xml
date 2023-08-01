@@ -9,81 +9,80 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/record_toolbar"
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/white"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/record_text">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/record_text"
-                android:layout_width="52dp"
-                android:layout_height="73dp"
-                android:layout_marginEnd="325dp"
-                android:fontFamily="@font/font_write"
-                android:gravity="center"
-                android:text="기록"
-                android:textColor="@color/color5"
-                android:textSize="48sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="26dp"
-                android:layout_height="21dp"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recordRV"
+                android:layout_width="match_parent"
+                android:layout_height="2043dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/booktory1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/record_text"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.appcompat.widget.Toolbar>
+                android:backgroundTint="@color/color8"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:overScrollMode="never"
+                android:paddingEnd="0dp"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                tools:listitem="@layout/list_item_record1" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
+    <TextView
+        android:id="@+id/record_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="325dp"
+        android:fontFamily="@font/font_write"
+        android:gravity="center"
+        android:text="기록"
+        android:textColor="@color/color5"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="25dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="66dp"
+        android:src="@drawable/booktory1"
+        app:layout_constraintStart_toEndOf="@+id/record_text"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/AddRecordBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginTop="532dp"
+        android:layout_marginTop="400dp"
         android:layout_marginEnd="24dp"
         android:clickable="true"
         android:contentDescription="기록 추가"
         android:src="@drawable/baseline_add_24"
         app:backgroundTint="@color/color5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/record_toolbar"
-        tools:tint="@color/white" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recordRV"
-        android:layout_width="387dp"
-        android:layout_height="563dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/color8"
-        android:clipToPadding="false"
-        android:orientation="vertical"
-        android:overScrollMode="never"
-        android:paddingEnd="0dp"
-        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/record_toolbar"
-        tools:listitem="@layout/list_item_record1" />
+        app:layout_constraintTop_toBottomOf="@+id/record_text"
+        tools:tint="@color/white" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

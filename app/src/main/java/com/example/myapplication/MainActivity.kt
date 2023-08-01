@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.myapplication.book.BookFragment
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.mypage.MypageFragment
+import com.example.myapplication.record.RecordFragment
 
 
 
