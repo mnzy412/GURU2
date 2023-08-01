@@ -69,7 +69,6 @@ class RecordFragment : Fragment() {
                 setupRecyclerView(recordList)
             }
             .addOnFailureListener { exception ->
-                // 데이터 가져오기 실패 시 처리
             }
 
         return viewBinding.root
