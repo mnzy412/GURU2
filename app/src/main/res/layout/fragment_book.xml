@@ -12,8 +12,9 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="60dp"
         android:text="태연의 책장"
-        android:textColor="#4C2727"
-        android:textSize="24sp"
+        android:fontFamily="@font/font_write"
+        android:textColor="@color/color5"
+        android:textSize="45sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
